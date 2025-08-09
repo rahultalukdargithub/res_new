@@ -3,6 +3,7 @@ import pandas as pd
 import requests
 from io import BytesIO
 import openpyxl
+from scraper import scrape_by_location, scrape_by_name
 
 st.set_page_config(page_title="Restaurant Scraper", layout="centered")
 st.title("🍽️ Restaurant Scraper Assistant")
@@ -84,7 +85,7 @@ if scrape_type == "Location":
                     # )
                     # result = response.json()
                     # data = result.get("data", [])
-                    data = scrapper(City, area, limit)
+                    data = scrape_by_location(city, area, limit)
                     new_df = pd.DataFrame(data, columns=["Name", "Address", "Phone"] )
                     new_df.index+=1
                     new_df = new_df.dropna()
@@ -163,3 +164,4 @@ with st.sidebar:
             st.markdown(f"- {entry['type']} **{entry['query']}** ({entry['count']} results)")
     else:
         st.info("No searches yet.")
+
