@@ -1,7 +1,7 @@
 from serpapi import GoogleSearch
 import os
 from dotenv import load_dotenv
-from zomato_scrapper import scrapper
+
 from zs import scrapper
 
 # Load environment variables from .env
@@ -142,6 +142,7 @@ def scrape_by_name(name):
 #             break
 
 #     return all_data
+
 
 
 
